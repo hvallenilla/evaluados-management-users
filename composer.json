@@ -1,0 +1,18 @@
+{
+    "name": "evaluados/users",
+    "description": "This bundle to handle the differents profiles user in Evaluados",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Henry Vallenilla",
+            "email": "henry@e-valuados.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Evaluados\\UserBundle": "src/"
+        }
+    },
+    "require": {}
+}
