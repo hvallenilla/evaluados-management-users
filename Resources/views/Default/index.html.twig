@@ -1,1 +1,98 @@
-Hello World!
+{% extends ':2019:base.html.twig' %}
+{% block title %}- {{ 'users.titles.coordinators'|trans() }}{% endblock %}
+{% block module_title %} {{ 'users.titles.coordinators'|trans() }} {% endblock %}
+
+ {% block breadcrumb_left %}
+     <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="javascript:void(0)">{{ 'users.titles.home'|trans() }}</a></li>
+         <li class="breadcrumb-item active">{{ 'users.titles.coordinators'|trans() }}</li>
+     </ol>
+ {% endblock %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block content %}
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <button
+                    type="button"
+                    class="btn btn-info btn-rounded m-t-10 float-right add-coordinator"
+                    data-title="{{ 'users.new.coordinator.action'|trans }}"
+                    data-href="{{ path('app_bundle_evaluados_users_new') }}"
+                >
+                    <i class="fa fa-plus"></i> {{ 'users.new.coordinator.action'|trans({}, 'messages') }}
+                </button>
+
+                {{ include ('EvaluadosUserBundle:Component:_table.html.twig',
+                    {
+                        type: 'coordinators',
+                    })
+                }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+
+    {{ parent() }}
+
+    <script src="{{ asset('assets/2019/plugins/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/2019/plugins/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
+
+    <script type="text/javascript">
+
+        $( document ).ready(function() {
+
+            $('.add-coordinator').click( function () {
+                let title = $(this).data('title');
+                let path = $(this).data('href');
+
+                $('#modal-users').modal({show:true});
+
+                $.ajax({
+                    url: path,
+                    method: 'get',
+                    success: function(response){
+                        // Add response in Modal body
+                        $('.modal-body').html(response);
+                        // Display Modal
+                        $('#modal-users').modal('show');
+                    }
+                });
+            });
+
+            $(function () {
+                $('#teacher-list').DataTable({
+                    "columnDefs": [{
+                        "visible": true,
+                        "targets": 2
+                    }],
+                    "order": [
+                        [2, 'asc']
+                    ],
+                    "displayLength": 25,
+                    "lengthChange": true,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false,
+                    "language": {
+                       "search": "Buscar:",
+                       "lengthMenu": "Mostrando _MENU_ registros por página",
+                       "zeroRecords": "No hay resultados",
+                       "info": "Showing page _PAGE_ of _PAGES_",
+                       "infoEmpty": "No hay resultados",
+                       "infoFiltered": "(filtered from _MAX_ total records)"
+                    }
+               });
+
+            });
+
+        });
+
+    </script>
+    {{ include('@EvaluadosUser/Component/_modal.html.twig') }}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% for user in users %}
+    <tr>
+        <td>{{ user.firstName ~ ' ' ~ user.lastName }}</td>
+        <td>{{ user.email is defined ? user.email : '' }}</td>
+        <td>{{ user.lastvisitDate|date }}</td>
+        <td>
+            <a
+                href="#"
+            >
+                <i class="fa fa-edit"></i></a>
+            <a href="#"><i class="fas fa-times text-danger"></i></a>
+        </td>
+    </tr>
+{% endfor %}

@@ -1,0 +1,55 @@
+{% extends 'base.modal.html.twig' %}
+
+{% block body %}
+
+
+        <form action="{{ path('app_bundle_evaluados_users_new') }}"
+              class="needs-validation"
+              method="post"
+              enctype="multipart/form-data" id="form-user">
+
+            {{ include('@EvaluadosUser/Default/form.html.twig') }}
+
+            <div class="text-right">
+                <button type="button" id="btn-save" class="btn btn-info float_right">{{ 'users.action.save'|trans }}</button>
+                <button type="button" class="btn waves-effect waves-light btn-outline-secondary" data-dismiss="modal">
+                    {{ 'users.action.close'|trans() }}
+                </button>
+            </div>
+        </form>
+
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $('#btn-save').click(function(e) {
+        let form = $('.needs-validation');
+        let is = false;
+
+        if (form[0].checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        } else {
+            is = true;
+        }
+
+        form.addClass('was-validated');
+
+        if ( is ) {
+
+            if ( ! $("#coord").is(':checked') && ! $("#teach").is(':checked')) {
+                message("error", "Indique el tipo de usuario");
+                return false;
+            }
+
+            $('#form-user').submit();
+        }
+
+        return false;
+
+    });
+
+    </script>
+{% endblock %}

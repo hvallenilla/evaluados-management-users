@@ -1,0 +1,39 @@
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                {{ form_widget(form.firstName) }}
+                <div class="valid-feedback">
+                    {{ 'users.feedback.success'|trans({}, 'form') }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                {{ form_widget(form.lastName) }}
+                <div class="valid-feedback">
+                    {{ 'users.feedback.success'|trans({}, 'form') }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                {{ form_widget(form.email) }}
+                <div class="valid-feedback">
+                    {{ 'users.feedback.success'|trans({}, 'form') }}
+                </div>
+                <div class="invalid-feedback">
+                    {{ 'users.feedback.provide.valid.email'|trans({}, 'form') }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <input name="user_type" type="radio" id="coord" value="coord" >
+                <label for="coord">{{ 'users.fields.option_coordinator'|trans({}, 'form') }}</label>
+
+                <input name="user_type" type="radio" id="teach" value="teach">
+                <label for="teach">{{ 'users.fields.option_teacher'|trans({}, 'form') }}</label>
+            </div>
+        </div>
+    </div>

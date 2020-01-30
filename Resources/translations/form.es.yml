@@ -1,0 +1,11 @@
+users:
+  fields:
+    first_name: Nombre
+    last_name: Apellido
+    email: Email
+    option_coordinator: Coordinador
+    option_teacher: Docente
+  feedback:
+    success: Muy bien!
+    error: Ingrese la información correcta
+    provide.valid.email: Ingrese un email válido

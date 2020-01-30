@@ -1,0 +1,15 @@
+<div class="table-responsive">
+    <table id="teacher-list" class="table">
+        <thead>
+            {% for col in columns %}
+                <th>{{ col }}</th>
+            {% endfor %}
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% if type == 'coordinators' %}
+                {{ include('@EvaluadosUser/Component/_coordinators.list.html.twig') }}
+            {% endif %}
+        </tbody>
+    </table>
+</div>

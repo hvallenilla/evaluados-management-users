@@ -1,0 +1,23 @@
+users:
+  list:
+    more: See more
+
+  action:
+    save: Save
+    close: Close
+
+  user.role.teacher: Teacher
+  user.role.coordinator: Coordinator
+
+  titles:
+    home: Home
+    docentes: Teachers
+    coordinators: Coordinators
+
+  new:
+    coordinator:
+      title: New Coordinator
+      action: New Coordinator
+
+    flash:
+      success: "User %user_type% created successfully"

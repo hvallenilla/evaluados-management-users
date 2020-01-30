@@ -1,0 +1,23 @@
+users:
+  list:
+    more: Ver más
+
+  action:
+    save: Guardar
+    close: Cerrar
+
+  user.role.teacher: Docente
+  user.role.coordinator: Coordinador
+
+  titles:
+    home: Inicio
+    docentes: Docentes
+    coordinators: Coordinadores
+
+  new:
+    coordinator:
+      title: Nuevo Coordinador
+      action: Nuevo Coordinador
+
+    flash:
+      success: "Usuario %user_type% creado con éxito"
